@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 1px;
+            padding: 1px;
+            background-image: url("registration.jpg");
+            background-size: cover;
+            background-repeat: no-repeat;
+        }
+        .flex {
+            display: flex;
+            flex-direction: row;
+            color: rgb(183, 191, 198);
+        }
+        .container {
+            padding: 30px;
+            background-color: rgba(71, 105, 126, 0.4);
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            gap: 20px; 
+            max-width: 600px; 
+            margin: 0 auto;
+            width: 500px;
+            padding: 30px;
+            color: rgb(183, 191, 198);
+        }
+        input[type="text"],
+        input[type="email"],
+        input[type="tel"],
+        select,
+        textarea {
+            width: 100%;
+            padding: 10px;
+            margin: 5px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+            outline: none; /* Remove default focus outline */
+        }
+        input[type="submit"] {
+            background-color: #4CAF50;
+            color: white;
+            padding: 15px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+        input:required {
+            border-color: red; /* Default required field color */
+        }
+        input:focus {
+            border-color: blue; /* Focused input field border color */
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2 style="color: aliceblue;">Student Registration Form</h2>
+    <p style="color: azure;">Fill out this form carefully for registration</p>
+    <form id="registrationForm" action="#" method="post" onsubmit="return validateForm()">
+        <div class="flex">
+            <label for="firstname">First Name:</label>
+            <input type="text" id="firstname" name="firstName" maxlength="20" pattern="[A-Za-z ]+" style="height: 30px;" required>
+            <label for="secondName">Second Name:</label>
+            <input type="text" id="secondname" name="secondName" maxlength="20" pattern="[A-Za-z ]+" style="height: 30px;" required>
+            <label for="lastName">Last Name:</label>
+            <input type="text" id="lastname" name="lastName" maxlength="20" pattern="[A-Za-z ]+" style="height: 30px;" required>
+        </div>
+
+        <div class="flex">
+            <label for="birthMonth">Birth Date:</label>
+            <input type="number" id="birthMonth" name="birthMonth" min="1" max="12" style="height: 25px;" required >
+            <input type="number" id="birthDay" name="birthDay" min="1" max="31" style="height: 25px;" required>
+            <input type="number" id="birthYear" name="birthYear" min="1974" max="2004" style="height: 25px;" required>
+
+            <label for="gender">Gender:</label>
+            <select id="gender" name="gender"  style="height: 40px;" required>
+                <option value="">Select Gender</option>
+                <option value="Male">Male</option>
+                <option value="Female">Female</option>
+            </select>
+        </div>
+
+        <label for="address">Address:</label>
+        <textarea id="address" name="address" maxlength="250" required></textarea>
+
+        <div class="flex">
+            <label for="city">City:</label>
+            <input type="text" id="city" name="city" maxlength="50" style="height: 30px;" required>
+
+            <label for="state">State:</label>
+            <input type="text" id="state" name="state" maxlength="50" style="height: 30px;" required>
+        </div>
+
+        <label for="postalCode">Postal Code:</label>
+        <input type="text" id="postalCode" name="postalCode" maxlength="5" pattern="[0-9]{5}"  style="height: 30px;" required>
+
+        <div class="flex">
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" maxlength="250" placeholder="ex: myname @gmail.com"  style="height: 30px;">
+
+            <label for="mobile">Mobile Number:</label>
+            <input type="tel" id="mobile" name="mobile" maxlength="12" placeholder="0000-0000000"  style="height: 30px;" required>
+        </div>
+
+        <div class="flex">
+            <label for="phone">Phone Number:</label>
+            <input type="tel" id="phone" name="phone" maxlength="12" placeholder="(000) 000-000"  style="height: 30px;">
+
+            <label for="work">Work Number:</label>
+            <input type="tel" id="work" name="work" maxlength="12" placeholder="(000) 000-000"  style="height: 30px;">
+        </div>
+
+        <label for="company">Company:</label>
+        <input type="text" id="company" name="company" maxlength="150"  style="height: 30px;" required>
+
+        <label for="courses">Courses:</label>
+        <select id="courses" name="courses">
+            <option value="Course 1">Course 1</option>
+            <option value="Course 2">Course 2</option>
+            <option value="Course 3">Course 3</option>
+            <option value="Course 4">Course 4</option>
+            <option value="Course 5">Course 5</option>
+            <option value="Course 6">Course 6</option>
+            <option value="Course 7">Course 7</option>
+            <option value="Course 8">Course 8</option>
+            <option value="Course 9">Course 9</option>
+            <option value="Course 10">Course 10</option>
+        </select>
+        <label for="comments">Additional Comments:</label>
+        <textarea id="comments" name="comments" maxlength="500"  style="height: 30px;"></textarea>
+
+        <input type="submit" value="Submit">
+        <input type="button" value="Clear Fields" onclick="clearFields()">
+    </form>
+</div>
+
+<script>
+    function validateForm() {
+        // Add validation logic here
+        // For demonstration, let's just show an alert
+        alert("Form submitted successfully!");
+        return false; // Prevent form submission for now
+    }
+
+    function clearFields() {
+        // Reset all form fields to default status
+        document.getElementById("registrationForm").reset();
+    }
+</script>
+
+</body>
+</html>
